@@ -14,9 +14,9 @@
           <li class="nav-item">
             <a class="nav-link" routerLink="/nuevoLink" href="#">Link</a>
           </li>
-          <li class="nav-item dropdown" *ngIf="serviceUsuario.getUsuarioActual()">
+          <li class="nav-item dropdown" *ngIf="!serviceUsuario.invalidLogin">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown
+              Logged In
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" href="#">Action</a></li>

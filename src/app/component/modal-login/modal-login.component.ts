@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { NgForm } from '@angular/forms';
+import { UsuarioService } from 'src/app/shared/usuario.service';
+import { Usuario } from 'src/app/shared/usuario.model';
 
 
 @Component({
@@ -16,7 +19,7 @@ export class ModalLoginComponent implements OnInit {
   
   closeResult = '';
 
-  constructor(private modalService: NgbModal) {}
+  constructor(private modalService: NgbModal,public serviceUsuario:UsuarioService) {}
 
   open(content:any) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
@@ -36,5 +39,22 @@ export class ModalLoginComponent implements OnInit {
     }
   }
 
+  onSubmit(formLogin:NgForm){
+   // this.serviceUsuario.getUserbyId(this.form)
+   const credentials ={
+     'id':formLogin.value.Id,
+     'contrasenna':formLogin.value.Contrasenna
+
+   }
+   
+   this.serviceUsuario.loginUser(credentials)
+   this.cleanModalLogin();
+
+
+  }
+
+  cleanModalLogin(){
+      this.serviceUsuario.usuarioActual = new Usuario();
+  }
 
 }

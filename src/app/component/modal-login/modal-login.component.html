@@ -1,36 +1,63 @@
 <ng-template #content let-modal>
-    <div class="modal-header">
-      <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
-      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+
+    <div class="modal-header" >
+      <h4 class="modal-title" id="modal-basic-title">Iniciar Sesión</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click'); cleanModalLogin() ">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
     <div class="modal-body">
-      <form>
+
+      <!--FORM INICIO SESION-->
+      <form novalidate (submit)="onSubmit(formModalLogin)" #formModalLogin="ngForm" >
+
         <div class="form-group">
-          <label for="dateOfBirth">Date of birth</label>
-          <div class="input-group">
-            <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
-            <div class="input-group-append">
-              <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
-            </div>
-          </div>
+          <label for="">Identificación (Nacional,DIMEX)</label>
+          <input class="form-control form-control-lg"
+              placeholder="123457890" name="Id" id = "Id"
+              #Id="ngModel" [(ngModel)]="serviceUsuario.usuarioActual.Id"
+              required minlength="1" [class.invalid]="Id.invalid && Id.touched"
+              >
+              <!--required [class.invalid]="cardOwnerName.invalid && cardOwnerName.touched"-->
         </div>
+
+        <div class="form-group">
+          <label for="">Contraseña </label>
+          <input type="password" class="form-control form-control-lg"
+              placeholder="******" name="Contrasenna" id ="Contrasenna"
+              #Contrasenna="ngModel" [(ngModel)]="serviceUsuario.usuarioActual.Contrasenna"
+              required minlength="1" [class.invalid]="Contrasenna.invalid && Contrasenna.touched"
+
+              >
+        </div>
+
+        <div class="modal-footer">
+          <div class="form-group">
+            <button type="submit" class="btn btn-outline-dark btn-block" (click)="modal.close('Save click')"
+            [disabled]="formModalLogin.invalid">Iniciar Sesión</button>
+          </div>
+          
+        </div>
+
       </form>
+
     </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
-    </div>
+
+    
     <pre>{{ closeResult }}</pre>
   </ng-template>
   
 
-  <div>
+  <div *ngIf="!(serviceUsuario.invalidLogin)">
     <button type="button" class="btn btn-outline-light  ml-3"
-    (click)="open(content)"
-    >Iniciar Sesion</button>
+    (click)="serviceUsuario.logOut()"
+    >Cerrar Sesión</button>
   </div>
 
-  
+  <div *ngIf="serviceUsuario.invalidLogin">
+    <button type="button" class="btn btn-outline-light  ml-3"
+    (click)="open(content)"
+    >Iniciar Sesión</button>
+  </div>
   
   

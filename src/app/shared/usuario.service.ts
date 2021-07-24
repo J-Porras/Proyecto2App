@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Usuario } from './usuario.model';
 import { Router } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 
 
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class UsuarioService {
 
-  constructor(private http:HttpClient,private router:Router) { }
+  constructor(private http:HttpClient,private router:Router,private jwtHelper:JwtHelperService) { }
   readonly baseURL ="https://localhost:44375/";
   response:any;
 
@@ -37,7 +38,7 @@ export class UsuarioService {
 
   isUserAuthenticated(){
     const token: string|null = localStorage.getItem("jwt");
-    if(token){
+    if(token && !this.jwtHelper.isTokenExpired(token)){
       return true;
     }
     else{
@@ -55,21 +56,15 @@ export class UsuarioService {
 
     this.http.post(this.baseURL+"api/userLogin",credentials)
     .subscribe(response =>{
-      console.log(response)
-      const token = (<any>response).token;
-      localStorage.setItem("jwt",JSON.stringify(token))  ;
+      const token = (<any>response);
+      localStorage.setItem("jwt",token); 
       this.invalidLogin = false;
       this.router.navigate(["/profileScreen"]);
       //this.usuarioActual = new Usuario();
     },err =>{
       this.invalidLogin = true;
-    })
+    })  
   }
-
-
-  
-
-
 
   
 

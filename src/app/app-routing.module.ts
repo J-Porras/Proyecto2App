@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { JwtModule } from '@auth0/angular-jwt';
+import { AuthGuardService } from './authGuard/auth-guard.service';
 import { LoginScreenComponent } from './component/login-screen/login-screen.component';
 
 import { NuevoLinkComponent } from './component/nuevo-link/nuevo-link.component';
@@ -18,13 +19,11 @@ const routes: Routes = [
   },
   {
     path:'profileScreen',
-    component: LoginScreenComponent
+    component: LoginScreenComponent,canActivate:[AuthGuardService]
   },
     //path:'**'//wildcard
   //{ path: '', component: AppComponent },
   //path con parametros ejem:    { path: 'profile/:username', component: Componente },
-
-
 ];
 
 @NgModule({
@@ -40,6 +39,7 @@ const routes: Routes = [
     })
 
   ],
+  providers:[AuthGuardService],
   exports: [
     RouterModule
   ]

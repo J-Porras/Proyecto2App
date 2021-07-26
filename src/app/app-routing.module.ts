@@ -2,9 +2,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { JwtModule } from '@auth0/angular-jwt';
 import { AuthGuardService } from './authGuard/auth-guard.service';
-import { LoginScreenComponent } from './component/login-screen/login-screen.component';
+import { LoginScreenComponent } from './pages/login-screen/login-screen.component';
 
-import { NuevoLinkComponent } from './component/nuevo-link/nuevo-link.component';
+import { NuevoLinkComponent } from './pages/nuevo-link/nuevo-link.component';
+import { PageSalasComponent } from './pages/page-salas/page-salas.component';
 //https://www.youtube.com/watch?v=HjIpeEzUK_s
 //https://github.com/auth0/angular2-jwt
 //las rutas mas especificas van mas arriba
@@ -20,6 +21,11 @@ const routes: Routes = [
   {
     path:'profileScreen',
     component: LoginScreenComponent,canActivate:[AuthGuardService]
+  },
+  {
+    path:'Salas',
+    component: PageSalasComponent, canActivate:[AuthGuardService]
+
   },
     //path:'**'//wildcard
   //{ path: '', component: AppComponent },

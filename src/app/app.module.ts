@@ -7,10 +7,13 @@ import { FormsModule } from "@angular/forms";
 import { AppComponent } from './app.component';
 import { UsuarioListaComponent } from './component/usuario-lista/usuario-lista.component';
 import { ModalLoginComponent } from './component/modal-login/modal-login.component';
-import { NuevoLinkComponent } from './component/nuevo-link/nuevo-link.component';
+import { NuevoLinkComponent } from './pages/nuevo-link/nuevo-link.component';
 import { NavbarComponent } from './component/navbar/navbar.component';
 import { AppRoutingModule } from './app-routing.module';
-import { LoginScreenComponent } from './component/login-screen/login-screen.component';
+import { LoginScreenComponent } from './pages/login-screen/login-screen.component';
+import { PageSalasComponent } from './pages/page-salas/page-salas.component';
+import { SalaListaComponent } from './component/sala-lista/sala-lista.component';
+import { NewSalaFormComponent } from './component/new-sala-form/new-sala-form.component';
 
 
 @NgModule({
@@ -21,6 +24,9 @@ import { LoginScreenComponent } from './component/login-screen/login-screen.comp
     NuevoLinkComponent,
     NavbarComponent,
     LoginScreenComponent,
+    PageSalasComponent,
+    SalaListaComponent,
+    NewSalaFormComponent,
   ],
   imports: [
     BrowserModule,

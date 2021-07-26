@@ -1,0 +1,18 @@
+
+<div class="container mt-4 " id = "containerListSalas">
+    <h4>Lista de Salas</h4>
+    <table class="table mt-4">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nombre</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let salaIterator of salaService.listSalas">
+                <th scope="row">{{ salaIterator.Id}}</th>
+                <td>{{salaIterator.Nombre}}</td>
+            </tr> 
+        </tbody>
+      </table>
+</div>

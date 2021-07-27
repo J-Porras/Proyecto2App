@@ -8,6 +8,7 @@
     
           <label for="nombreSala" class="form-label h6">Nombre de la Sala (requerido)</label>
           <input type="text" class="form-control" id="nombreSala" aria-describedby="    "
+          appNomSalaValidator
           required minlength="2" [(ngModel)]="salaService.salaForm.Nombre" name="nombreSala" #nomSala="ngModel"
           
           >
@@ -20,6 +21,10 @@
 
             <div *ngIf="nomSala.errors?.minlength">
               Nombre de sala debe ser mínimo dos carácteres
+            </div>
+          
+            <div *ngIf="nomSala.errors?.nomSalaInvalid">
+              Nombre de sala repetido
             </div>
           
           

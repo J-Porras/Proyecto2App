@@ -20,7 +20,6 @@ export class NewSalaFormComponent implements OnInit {
 
   async setIDplaceholder(){
     await this.salaService.getAllSalas();
-    console.log(this.salaService.listSalas)
     this.idSala = this.salaService.listSalas[this.salaService.listSalas.length - 1].Id + 1;
 
   }

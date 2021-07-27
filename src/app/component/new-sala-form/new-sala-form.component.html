@@ -2,14 +2,42 @@
 <div class="container mt-4">
     <h4>Creación de Sala</h4>
 
-    <form>
+    <form #newSalaForm="ngForm" (ngSubmit)="onSubmit()" >
     
         <div class="mb-3 mt-4">
     
-          <label for="nombreSala" class="form-label h4">Nombre de la Sala</label>
-          <input type="text" class="form-control" id="nombreSala" aria-describedby="    ">
+          <label for="nombreSala" class="form-label h6">Nombre de la Sala (requerido)</label>
+          <input type="text" class="form-control" id="nombreSala" aria-describedby="    "
+          required minlength="2" [(ngModel)]="salaService.salaForm.Nombre" name="nombreSala" #nomSala="ngModel"
+          
+          >
+          <div *ngIf="nomSala.invalid && (nomSala.dirty || nomSala.touched)"
+            class="alert alert-danger mt-2">
+
+            <div *ngIf="nomSala.errors?.required">
+              Nombre de sala requerido
+            </div>
+
+            <div *ngIf="nomSala.errors?.minlength">
+              Nombre de sala debe ser mínimo dos carácteres
+            </div>
+          
+          
+
+            
+
+        </div>
+
+
+
+          <label for="IdSalaDefinido" class="form-label h6">Id predefinido</label>
+          <input disabled type="text" id="IdSalaDefinido" class="form-control" [placeholder]="idSala">
+
         
         </div>
-        <button type="submit" class="btn btn-primary">Crear</button>
+        <button type="submit" class="btn btn-primary"
+        [disabled]="!newSalaForm.form.valid"
+        
+        >Crear</button>
     </form>
 </div>

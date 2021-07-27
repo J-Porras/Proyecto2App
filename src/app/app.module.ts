@@ -12,8 +12,9 @@ import { NavbarComponent } from './component/navbar/navbar.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LoginScreenComponent } from './pages/login-screen/login-screen.component';
 import { PageSalasComponent } from './pages/page-salas/page-salas.component';
+  import { NewSalaFormComponent } from './component/new-sala-form/new-sala-form.component';
+import { NomSalaValidatorDirective } from './shared/directivas/nom-sala-validator.directive';
 import { SalaListaComponent } from './component/sala-lista/sala-lista.component';
-import { NewSalaFormComponent } from './component/new-sala-form/new-sala-form.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { NewSalaFormComponent } from './component/new-sala-form/new-sala-form.co
     PageSalasComponent,
     SalaListaComponent,
     NewSalaFormComponent,
+    NomSalaValidatorDirective,
   ],
   imports: [
     BrowserModule,

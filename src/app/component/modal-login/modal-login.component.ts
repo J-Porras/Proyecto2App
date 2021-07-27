@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { NgForm } from '@angular/forms';
-import { UsuarioService } from 'src/app/shared/usuario.service';
-import { Usuario } from 'src/app/shared/usuario.model';
+import { UsuarioService } from 'src/app/shared/usuario-service/usuario.service';
+import { Usuario } from 'src/app/shared/usuario-service/usuario.model';
 
 
 @Component({

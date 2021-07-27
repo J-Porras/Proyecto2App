@@ -8,6 +8,7 @@ import { ThrowStmt } from '@angular/compiler';
 })
 export class SalaService {
 
+  salaForm:Sala = new Sala();
   readonly baseURL ="https://localhost:44375/";
   listSalas:Sala[];
 
@@ -29,6 +30,7 @@ export class SalaService {
     try {
       let response:any = await this.http.get(this.baseURL+"api/Sala/salas").toPromise()
       this.listSalas = JSON.parse(response);
+      //console.table(this.listSalas)
       return;
     } catch (error) {
       return null;

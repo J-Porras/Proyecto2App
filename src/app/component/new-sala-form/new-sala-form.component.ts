@@ -1,4 +1,7 @@
+import { NgForm } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { SalaService } from 'src/app/shared/salas-service/sala.service';
+import { Sala } from 'src/app/shared/salas-service/sala.model';
 
 @Component({
   selector: 'app-new-sala-form',
@@ -7,9 +10,36 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewSalaFormComponent implements OnInit {
 
-  constructor() { }
+  idSala:number;
+  salaForm:Sala = new Sala();
+  constructor(public salaService: SalaService) { }
 
   ngOnInit(): void {
+   this.setIDplaceholder()
   }
+
+  async setIDplaceholder(){
+    await this.salaService.getAllSalas();
+    console.log(this.salaService.listSalas)
+    this.idSala = this.salaService.listSalas[this.salaService.listSalas.length - 1].Id + 1;
+
+  }
+
+  isValidName(newSalaForm:NgForm){
+    this.salaService.listSalas.forEach(
+      (element) =>{
+        return !(element.Nombre == newSalaForm.value.nombreSala)
+      }
+    );
+    return true;
+
+  }
+
+  onSubmit(){
+
+  }
+
+
+
 
 }

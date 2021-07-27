@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UsuarioService } from 'src/app/shared/usuario.service';
-
+import { UsuarioService } from 'src/app/shared/usuario-service/usuario.service';
 @Component({
   selector: 'app-usuario-lista',
   templateUrl: './usuario-lista.component.html',

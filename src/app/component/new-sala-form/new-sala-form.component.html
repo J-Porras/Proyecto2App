@@ -6,7 +6,7 @@
     
         <div class="mb-3 mt-4">
     
-          <label for="nombreSala" class="form-label h6">Nombre de la Sala (requerido)</label>
+          <label for="nombreSala" class="form-label h6">Nombre de la Sala (requerido,no sensible a espacios)</label>
           <input type="text" class="form-control" id="nombreSala" aria-describedby="    "
           appNomSalaValidator
           required minlength="2" [(ngModel)]="salaService.salaForm.Nombre" name="nombreSala" #nomSala="ngModel"

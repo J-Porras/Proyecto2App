@@ -28,7 +28,7 @@ export class NomSalaValidatorDirective implements Validator{
     let isValid = true;
     this.salaService.listSalas.forEach(
       (element) =>{
-        if((element.Nombre).toUpperCase() == value.toUpperCase()){
+        if((element.Nombre).toUpperCase().replace(/\s+/g, '') == value.toUpperCase().replace(/\s+/g, '')){
           isValid = false;
         }
       }

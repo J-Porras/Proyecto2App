@@ -9,7 +9,7 @@ import { Sala } from 'src/app/shared/salas-service/sala.model';
   styleUrls: ['./new-sala-form.component.css']
 })
 export class NewSalaFormComponent implements OnInit {
-
+  
   idSala:number;
   salaForm:Sala = new Sala();
   constructor(public salaService: SalaService) { }
@@ -42,3 +42,4 @@ export class NewSalaFormComponent implements OnInit {
 
 
 }
+

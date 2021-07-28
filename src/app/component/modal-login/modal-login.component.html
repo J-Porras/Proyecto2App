@@ -1,4 +1,4 @@
-<ng-template #content let-modal>
+<ng-template #modalLogin let-modal>
 
     <div class="modal-header" >
       <h4 class="modal-title" id="modal-basic-title">Iniciar Sesión</h4>
@@ -33,7 +33,7 @@
 
         <div class="modal-footer">
           <div class="form-group">
-            <button type="submit" class="btn btn-outline-dark btn-block" (click)="modal.close('Save click')"
+            <button type="submit" class="btn btn-outline-dark btn-block  btn-primary" (click)="modal.close('Save click')"
             [disabled]="formModalLogin.invalid">Iniciar Sesión</button>
           </div>
           
@@ -49,15 +49,19 @@
   
 
   <div *ngIf="!(serviceUsuario.invalidLogin)">
-    <button type="button" class="btn btn-outline-light  ml-3"
+    <button type="button" class="btn btn-outline-light col-12 mt-2 mt-lg-0"
     (click)="serviceUsuario.logOut()"
     >Cerrar Sesión</button>
   </div>
 
-  <div *ngIf="serviceUsuario.invalidLogin">
-    <button type="button" class="btn btn-outline-light  ml-3"
-    (click)="open(content)"
-    >Iniciar Sesión</button>
-  </div>
+  <form class="d-flex">
+    <div *ngIf="serviceUsuario.invalidLogin">
+      <button type="button" class="btn btn-outline-light col-12 mt-2 mt-lg-0"
+      (click)="open(modalLogin)"
+      >Iniciar Sesión</button>
+    </div>
+
+  </form>
+  
   
   

@@ -12,6 +12,8 @@ import { Usuario } from 'src/app/shared/usuario-service/usuario.model';
 })
 export class ModalLoginComponent implements OnInit {
 
+  passwordType: boolean;
+
 
   ngOnInit(): void {
   }
@@ -54,7 +56,12 @@ export class ModalLoginComponent implements OnInit {
   }
 
   cleanModalLogin(){
-      this.serviceUsuario.usuarioActual = new Usuario();
+    this.serviceUsuario.usuarioActual = new Usuario();
+  }
+
+  togglePasswordType(){
+    this.passwordType = !this.passwordType;
+
   }
 
 }

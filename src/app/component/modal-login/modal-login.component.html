@@ -13,27 +13,50 @@
 
         <div class="form-group">
           <label for="">Identificación (Nacional,DIMEX)</label>
-          <input class="form-control form-control-lg"
+
+          <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <i class="fa fa-envelope" aria-hidden="true"></i>
+                </span>
+              </div>
+              <input class="form-control form-control-lg"
               placeholder="123457890" name="Id" id = "Id"
               #Id="ngModel" [(ngModel)]="serviceUsuario.usuarioActual.Id"
               required minlength="1" [class.invalid]="Id.invalid && Id.touched"
               >
-              <!--required [class.invalid]="cardOwnerName.invalid && cardOwnerName.touched"-->
+          </div>
         </div>
 
         <div class="form-group">
           <label for="">Contraseña </label>
-          <input type="password" class="form-control form-control-lg"
-              placeholder="******" name="Contrasenna" id ="Contrasenna"
-              #Contrasenna="ngModel" [(ngModel)]="serviceUsuario.usuarioActual.Contrasenna"
-              required minlength="1" [class.invalid]="Contrasenna.invalid && Contrasenna.touched"
+          <div class="input-group">
 
-              >
+            <input type="password" class="form-control form-control-lg"
+                placeholder="******" name="Contrasenna" id ="Contrasenna"
+                #Contrasenna="ngModel" [(ngModel)]="serviceUsuario.usuarioActual.Contrasenna"
+                required minlength="1" [class.invalid]="Contrasenna.invalid && Contrasenna.touched"
+                [type]="passwordType ? 'text' : 'password'"
+                
+
+            >
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <i class="fa"
+                  [ngClass]="{
+                    'fa-eye-slash': !passwordType,
+                    'fa-eye': passwordType
+                  }"
+                  (click)="togglePasswordType()">
+                </i>
+              </span>
+            </div>
+          </div>   
         </div>
 
         <div class="modal-footer">
           <div class="form-group">
-            <button type="submit" class="btn btn-outline-dark btn-block  btn-primary" (click)="modal.close('Save click')"
+            <button type="submit" class="btn btn-block btn-primary" (click)="modal.close('Save click')"
             [disabled]="formModalLogin.invalid">Iniciar Sesión</button>
           </div>
           

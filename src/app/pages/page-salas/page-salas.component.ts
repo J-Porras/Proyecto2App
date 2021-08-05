@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { SalaListaComponent } from 'src/app/component/sala-lista/sala-lista.component';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-page-salas',
@@ -9,6 +8,7 @@ import { SalaListaComponent } from 'src/app/component/sala-lista/sala-lista.comp
 export class PageSalasComponent implements OnInit {
 
   constructor() { }
+
 
   ngOnInit(): void {
   }

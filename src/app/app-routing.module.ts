@@ -27,7 +27,8 @@ const routes: Routes = [
     component: PageSalasComponent, canActivate:[AuthGuardService]
 
   },
-    //path:'**'//wildcard
+  
+  //path:'**'//wildcard
   //{ path: '', component: AppComponent },
   //path con parametros ejem:    { path: 'profile/:username', component: Componente },
 ];
@@ -39,7 +40,7 @@ const routes: Routes = [
       config:{
         tokenGetter:tokenGetter,
         allowedDomains:["localhost:4200"],
-        disallowedRoutes:[]
+        disallowedRoutes:["localhost:4200/Salas"]
 
       }
     })

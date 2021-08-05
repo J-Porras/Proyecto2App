@@ -61,6 +61,7 @@ export class UsuarioService {
       this.invalidLogin = false;
       this.router.navigate(["/profileScreen"]);
       //this.usuarioActual = new Usuario();
+      
     },err =>{
       this.invalidLogin = true;
     })  

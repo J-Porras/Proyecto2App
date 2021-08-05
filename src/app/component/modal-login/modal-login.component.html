@@ -48,14 +48,14 @@
   </ng-template>
   
 
-  <div *ngIf="!(serviceUsuario.invalidLogin)">
+  <div *ngIf="serviceUsuario.isUserAuthenticated()">
     <button type="button" class="btn btn-outline-light col-12 mt-2 mt-lg-0"
-    (click)="serviceUsuario.logOut()"
+    (click)="serviceUsuario.logOut()" routerLink="/"
     >Cerrar Sesión</button>
   </div>
 
   <form class="d-flex">
-    <div *ngIf="serviceUsuario.invalidLogin">
+    <div *ngIf="!(serviceUsuario.isUserAuthenticated())">
       <button type="button" class="btn btn-outline-light col-12 mt-2 mt-lg-0"
       (click)="open(modalLogin)"
       >Iniciar Sesión</button>

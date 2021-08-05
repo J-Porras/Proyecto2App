@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { SalaService } from 'src/app/shared/salas-service/sala.service';
 
 @Component({
@@ -8,10 +8,12 @@ import { SalaService } from 'src/app/shared/salas-service/sala.service';
 })
 export class SalaListaComponent implements OnInit {
 
+
   constructor(public salaService: SalaService) { }
 
   ngOnInit(): void {
     this.salaService.getAllSalas();
   }
+
 
 }

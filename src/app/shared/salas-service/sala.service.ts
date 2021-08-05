@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, JsonpClientBackend } from "@angular/common/http";
+import { HttpClient, HttpHeaders, } from "@angular/common/http";
 import { Sala } from './sala.model';
-import { ThrowStmt } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +16,7 @@ export class SalaService {
 
   async getSalabyId(idsala:number){
     try {
-      let response =  await this.http.get(this.baseURL+'api/Sala/sala/${idsala}').toPromise()
+      let response =  await this.http.get(this.baseURL+'api/Sala/sala/${idsala}',).toPromise()
       return (<Sala>response)
       
     } catch (error) {
@@ -28,12 +27,27 @@ export class SalaService {
 
   async getAllSalas(){
     try {
-      let response:any = await this.http.get(this.baseURL+"api/Sala/salas").toPromise()
+     
+      var header = {
+        headers: new HttpHeaders()
+        .set('Authorization',  `Bearer ${localStorage.getItem("jwt")}`)
+      }
+      let response:any = await this.http.get(this.baseURL+"api/Sala/salas",header).toPromise()
       this.listSalas = JSON.parse(response);
-      //console.table(this.listSalas)
       return;
     } catch (error) {
       return null;
     }
+  }
+
+  async postNewSala(content:object){
+    let response:any = await this.http.post(this.baseURL+"api/Sala/add",content).toPromise()
+    if(JSON.parse(response) == "true"){
+      alert("Sala ingresada correctamente")
+    }
+    else{
+      alert("Ocurrió un error, por favor intentalo más tarde")
+    }
+    
   }
 }

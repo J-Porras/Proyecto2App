@@ -1,4 +1,3 @@
-import { NgForm } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { SalaService } from 'src/app/shared/salas-service/sala.service';
 import { Sala } from 'src/app/shared/salas-service/sala.model';
@@ -24,20 +23,10 @@ export class NewSalaFormComponent implements OnInit {
 
   }
 
-  isValidName(newSalaForm:NgForm){
-    this.salaService.listSalas.forEach(
-      (element) =>{
-        return !(element.Nombre == newSalaForm.value.nombreSala)
-      }
-    );
-    return true;
-
-  }
-
+  //submit de formulario nueva sala
   onSubmit(){
 
   }
-
 
 
 

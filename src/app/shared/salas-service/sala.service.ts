@@ -28,11 +28,8 @@ export class SalaService {
   async getAllSalas(){
     try {
      
-      var header = {
-        headers: new HttpHeaders()
-        .set('Authorization',  `Bearer ${localStorage.getItem("jwt")}`)
-      }
-      let response:any = await this.http.get(this.baseURL+"api/Sala/salas",header).toPromise()
+
+      let response:any = await this.http.get(this.baseURL+"api/Sala/salas").toPromise()
       this.listSalas = JSON.parse(response);
       return;
     } catch (error) {

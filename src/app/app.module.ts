@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from "@angular/forms";
 
@@ -16,6 +16,7 @@ import { PageSalasComponent } from './pages/page-salas/page-salas.component';
 import { NomSalaValidatorDirective } from './shared/directivas/nom-sala-validator.directive';
 import { SalaListaComponent } from './component/sala-lista/sala-lista.component';
 import { PageUsuariosComponent } from './pages/page-usuarios/page-usuarios.component';
+import { HeaderInterceptor } from './shared/interceptors/HeaderInterceptor';
 
 
 @NgModule({
@@ -39,7 +40,9 @@ import { PageUsuariosComponent } from './pages/page-usuarios/page-usuarios.compo
     AppRoutingModule ,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: HeaderInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

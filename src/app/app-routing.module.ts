@@ -6,6 +6,7 @@ import { LoginScreenComponent } from './pages/login-screen/login-screen.componen
 
 import { NuevoLinkComponent } from './pages/nuevo-link/nuevo-link.component';
 import { PageSalasComponent } from './pages/page-salas/page-salas.component';
+import { PageUsuariosComponent } from './pages/page-usuarios/page-usuarios.component';
 //https://www.youtube.com/watch?v=HjIpeEzUK_s
 //https://github.com/auth0/angular2-jwt
 //las rutas mas especificas van mas arriba
@@ -27,6 +28,10 @@ const routes: Routes = [
     component: PageSalasComponent, canActivate:[AuthGuardService]
 
   },
+  {
+    path:'UsuriosGeneral',
+    component: PageUsuariosComponent, canActivate:[AuthGuardService]
+  },
   
   //path:'**'//wildcard
   //{ path: '', component: AppComponent },
@@ -40,7 +45,8 @@ const routes: Routes = [
       config:{
         tokenGetter:tokenGetter,
         allowedDomains:["localhost:4200"],
-        disallowedRoutes:["localhost:4200/Salas"]
+        disallowedRoutes:["localhost:4200/Salas","localhost:4200/Usuarios"],
+
 
       }
     })
